@@ -72,7 +72,7 @@
 								</td>
 								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 									<p class="text-gray-900 whitespace-no-wrap">
-										{{ $inccome->created_by }}
+										{{ $income->created_by }}
 									</p>
 								</td>
 								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -114,11 +114,7 @@
 		</div>
 	</div>
 	<x-jet-dialog-modal wire:model="showIncomeModal">
-		@if($income_id)
-		<x-slot name="title">Update Income </x-slot>
-		@else
 		<x-slot name="title">Register Income </x-slot>
-		@endif
 		<x-slot name="content">
 			<div class="mt-5 md:mt-0 md:col-span-2">
 				<form>
@@ -165,12 +161,8 @@
 			</div>
 		</x-slot>
 		<x-slot name="footer">
-			@if($income_id)
-			<x-jet-secondary-button wire:click="updateIncome" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Update</x-jet-secondary-button>
-			@else
 			<x-jet-secondary-button wire:click="newIncome" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save</x-jet-secondary-button>
-			@endif
-				<x-jet-button wire:click="closeIncomeModal">Close</x-jet-button>
+			<x-jet-button wire:click="closeIncomeModal">Close</x-jet-button>
 		</x-slot>
 	</x-jet-dialog-modal>
 </div>

@@ -56,16 +56,15 @@ class IncomeIndex extends Component
     }
     
     public function newIncome(){
+        $this->reset();
         income::create([
             'amount' => $this->amount,
             'income_desc' => $this->income_desc,
-            'created_by' => $this->user,
             'trans_date' => $this->trans_date
 
         ]);
-        $this->reset();
-        $this->income_desc = income::all();
         $this->showIncomeModal=false;
+        $this->mount();
     }
 
     public function showCreateModal(){
