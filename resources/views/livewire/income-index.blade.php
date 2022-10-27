@@ -40,11 +40,7 @@
 								</th>
 								<th
 									class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-									Status
-								</th>
-								<th
-									class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-									Status
+									Action
 								</th>
 							</tr>
 						</thead>
@@ -82,8 +78,6 @@
 										Edit
 									</x-jet-button>
 									</span>
-								</td>
-								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 									<span
                                         class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
 									<x-jet-danger-button wire:click="deleteEntry({{ $income->id }});" class="relative">
@@ -114,7 +108,11 @@
 		</div>
 	</div>
 	<x-jet-dialog-modal wire:model="showIncomeModal">
+		@if($income_id)
+		<x-slot name="title">Edit Income </x-slot>
+		@else
 		<x-slot name="title">Register Income </x-slot>
+		@endif
 		<x-slot name="content">
 			<div class="mt-5 md:mt-0 md:col-span-2">
 				<form>
@@ -161,7 +159,11 @@
 			</div>
 		</x-slot>
 		<x-slot name="footer">
+			@if($income_id)
+			<x-jet-secondary-button wire:click="updateIncome" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Update</x-jet-secondary-button>
+			@else
 			<x-jet-secondary-button wire:click="newIncome" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save</x-jet-secondary-button>
+			@endif
 			<x-jet-button wire:click="closeIncomeModal">Close</x-jet-button>
 		</x-slot>
 	</x-jet-dialog-modal>

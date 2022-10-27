@@ -21,33 +21,30 @@ class IncomeIndex extends Component
 
     public function mount()
     {
-        $this ->incomes= income::all();
+        $this->incomes= income::all();
     }
 
 
     public function updateIncome(){
-        $income_desc = income::findOrFail($this->income_id);
-        $income_desc->update([            
+        $income_desc = income::findOrFail($this->income_id)
+        ->update([            
             'amount' => $this->amount,
             'income_desc' => $this->income_desc,
             'trans_date' => $this->trans_date
         ]);
-        $this->reset();
         $this->income_desc = income::all();
         $this->showIncomeModal=false;
     }
 
     public function deleteEntry($incomeid){
-        $income_desc = income::findOrFail($incomeid);
-        $income_desc->delete();
+        $income_desc = income::findOrFail($incomeid)
+        ->delete()->fresh();
         $this->reset();
         $this->income_desc = income::all();
         $this->showIncomeModal=false;
     }
 
     public function showEditModal($incomeid){
-        $this->reset(['amount']);
-        $this->income_id = $incomeid;
         $income_det = income::find($incomeid);
         $this->amount = $income_det->amount;
         $this->income_desc = $income_det->income_desc;
@@ -56,13 +53,12 @@ class IncomeIndex extends Component
     }
     
     public function newIncome(){
-        $this->reset();
         income::create([
             'amount' => $this->amount,
             'income_desc' => $this->income_desc,
             'trans_date' => $this->trans_date
 
-        ]);
+        ])->refresh();
         $this->showIncomeModal=false;
         $this->mount();
     }
