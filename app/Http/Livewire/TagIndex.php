@@ -18,12 +18,12 @@ class TagIndex extends Component
 
 
 
-    public $expences = [];
+    public $products = [];
 
 
     public function mount()
     {
-        $this ->expences = tag::all();
+        $this ->products = tag::all();
     }
 
     public function newInvoice(){

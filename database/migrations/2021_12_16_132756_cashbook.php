@@ -20,7 +20,7 @@ class Cashbook extends Migration
             $table->string('expense_id');
             $table->string('created_by');
             $table->date('trans_date');
-            $table->timestamps('time_created');
+            $table->timestamps();
         });
     }
 

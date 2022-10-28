@@ -14,13 +14,12 @@ class Sales extends Migration
     public function up()
     {
         //
-        Schema::create('sales', function (Blueprint $table){
+        Schema::create('sales', function (Blueprint $table) {
             $table->id();
             $table->string('product_desc');
-            $table->double('sell_price', 10,2);
+            $table->double('sell_price', 10, 2);
             $table->integer('quantity');
             $table->string('created_by');
-            $table->date('sales_date');
             $table->timestamps();
         });
     }

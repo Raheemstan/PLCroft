@@ -9,5 +9,5 @@ class expenditure extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['amount', 'expence_desc', 'trans_date'];
+    protected $fillable = ['amount', 'expence_desc', 'trans_date', 'created_by'];
 }

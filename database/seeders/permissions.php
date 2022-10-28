@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Auth\Access\Gate;
+// use Illuminate\Auth\Access\Gate;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
@@ -19,12 +19,12 @@ class permissions extends Seeder
     public function run()
     {
         //
-    /**
-     * Create the initial roles and permissions.
-     *
-     * @return void
-     */
-    // Reset cached roles and permissions
+        /**
+         * Create the initial roles and permissions.
+         *
+         * @return void
+         */
+        // Reset cached roles and permissions
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
         // create permissions
@@ -44,9 +44,9 @@ class permissions extends Seeder
         $role2->givePermissionTo('unpublish entries');
 
         $role3 = Role::create(['name' => 'phoenix']);
-      
 
-        
+
+
         // gets all permissions via Gate::before rule; see AuthServiceProvider
 
         // create demo users
@@ -60,7 +60,7 @@ class permissions extends Seeder
             'name' => 'phoenix',
             'email' => 'phoenix@admin.com',
             'phone' => '2349071140264',
-            'address'=> 'Phoenix Administration',
+            'address' => 'Phoenix Administration',
             'password' => Hash::make('admin'),
         ]);
         $user->assignRole($role3);

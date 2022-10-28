@@ -19,7 +19,7 @@ class ProfitLoss extends Migration
             $table->string('pl_id');
             $table->string('transaction_type');
             $table->double('amount', 10, 2);
-            $table->timestamps('time_created');
+            $table->timestamps();
         });
     }
 

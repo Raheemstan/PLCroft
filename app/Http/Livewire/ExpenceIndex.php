@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\expenditure;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -15,7 +16,7 @@ class ExpenceIndex extends Component
     public $expence_desc;
     public $trans_date;
     public $eId;
-    public $user = "hi";
+    public $user = 23;
 
 
     public $expences = [];
@@ -58,7 +59,7 @@ class ExpenceIndex extends Component
         expenditure::create([
             'amount' => $this->amount,
             'expence_desc' => $this->expence_desc,
-            'created_by' => $this->user,
+            'created_by' => Auth::user()->id,
             'trans_date' => $this->trans_date
         ]);
         $this->reset();
