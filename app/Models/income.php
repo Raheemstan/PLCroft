@@ -9,5 +9,5 @@ class income extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['amount', 'income_desc', 'trans_date'];
+    protected $fillable = ['amount', 'income_desc', 'trans_date', 'created_by'];
 }

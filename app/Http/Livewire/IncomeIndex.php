@@ -14,7 +14,7 @@ class IncomeIndex extends Component
     public $income_desc;
     public $trans_date;
     public $income_id;
-   // public $user = Auth::user()->name;
+   // public $user = 
 
 
     public $incomes = [];
@@ -56,8 +56,8 @@ class IncomeIndex extends Component
         income::create([
             'amount' => $this->amount,
             'income_desc' => $this->income_desc,
-            'trans_date' => $this->trans_date
-
+            'trans_date' => $this->trans_date,
+            'created_by' => Auth::user()->id
         ])->refresh();
         $this->showIncomeModal=false;
         $this->mount();
